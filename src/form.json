@@ -1,5 +1,4 @@
 {
-  "product-details": {
     "vendors": {
       "0": "Air Filters 1 Inc (V)",
       "1": "Air Filters 2 Inc (V)",
@@ -7,7 +6,7 @@
       "3": "Air Filters 4 Inc (V)",
       "4": "Air Filters 5 Inc (V)"
     },
-    "description": {
+    "descriptions": {
       "0": "121203 - AMERICAN STANDARD;M952199-0070A pressure balance unit",
       "1": "124501 - EUROPEAN STANDARD;M952199-0070A pressure balance unit",
       "2": "245103 - AFRICAN STANDARD;M952199-0070A pressure balance unit",
@@ -49,5 +48,4 @@
       "3": "CNY",
       "4": "MXN"
     }
-  }
 }
