@@ -34,11 +34,13 @@ class App extends Component {
     };
   };
 
+  //set the initial state from JSON
   componentDidMount(){
     let data = require('./form.json');  //import the json file
     this.setState({ data }); //set data to state so that it can be used throughout app
-  }
+  };
 
+  //loop through state to grab vendors as option tags
   selectVendor(){
     let vendorOptions = [];
     let vendors = this.state.data.vendors;
@@ -48,10 +50,11 @@ class App extends Component {
         vendorOptions.push(
           <option key={vendor} value={vendor}>{vendor}</option>
         )
-    }
+    };
     return(vendorOptions);
-  }
+  };
 
+  //loop through state to grab descriptions as option tags
   productDescription(){
     let descriptionOptions = [];
     let descriptions = this.state.data.descriptions;
@@ -60,10 +63,11 @@ class App extends Component {
         descriptionOptions.push(
           <option key={description} value={description}>{description}</option>
         )
-    }
+    };
     return(descriptionOptions);
-  }
+  };
 
+  //loop through state to grab UOM as option tags
   productUOM(){
     let uomOptions = [];
     let uoms = this.state.data.UOM;
@@ -72,10 +76,11 @@ class App extends Component {
         uomOptions.push(
           <option key={uom} value={uom}>{uom}</option>
         )
-    }
+    };
     return(uomOptions);
-  }
+  };
 
+  //loop through state to grab sub-product as option tags
   subProduct(){
     let subOptions = [];
     let products = this.state.data.SubProduct;
@@ -84,12 +89,12 @@ class App extends Component {
         subOptions.push(
           <option key={product} value={product}>{product}</option>
         )
-    }
+    };
     return(subOptions);
-  }
+  };
 
 
-
+  //render the first form, using previous functions to fill options
   productDetails(){
     return(
       <div>
@@ -132,6 +137,7 @@ class App extends Component {
     )
   }
 
+  //render a form
   productIdentifiers(){
     return(
       <div>
@@ -167,6 +173,7 @@ class App extends Component {
     )
   }
 
+  //removes a product pack
   removeProduct(){
     let count = this.state.prodPackCount;
     let newCount = count - 1;
@@ -175,17 +182,20 @@ class App extends Component {
       this.setState({
         prodPackCount: newCount,
       })
-    }
-  }
+    };
+  };
 
+  //adds a product pack
   addPack(){
     let count = this.state.prodPackCount;
     let newCount = count + 1;
     this.setState({
       prodPackCount: newCount,
     })
-  }
+  };
 
+  //renders a product pack based on the state from previous 2 methods
+  //uses a loop to determine how many should be displayed
   productPack(){
     let packs = [];
     let count = this.state.prodPackCount;
@@ -220,10 +230,11 @@ class App extends Component {
         </FormGroup>
       </div>
       );
-    }
+    };
     return packs;
-  }
+  };
 
+  //loop through state to grab retailers as option tags
   retailers() {
     let retailOptions = [<option key="select-1" value="select" disabled>select (multiple)</option>];
       let retailers = this.state.data.Retailers;
@@ -232,10 +243,11 @@ class App extends Component {
           retailOptions.push(
             <option key={retail} value={retail}>{retail}</option>
           )
-      }
+      };
     return retailOptions;
-  }
+  };
 
+  //renders form for availability, calls retailers for option tags
   productAvailability(){
     return(
       <div>
@@ -254,8 +266,9 @@ class App extends Component {
         </FormGroup>
       </div>
     )
-  }
+  };
 
+  //loop through state to grab currency as option tags
   getCurrency(){
     let curOptions = [<option key="select-2" value="null">Select One</option>];
       let currencies = this.state.data.Currency;
@@ -264,10 +277,11 @@ class App extends Component {
           curOptions.push(
             <option key={currency} value={currency}>{currency}</option>
           )
-    }
+    };
     return curOptions;
-  }
+  };;
 
+  //renders pricing form
   productPricing(){
     return(
       <FormGroup>
@@ -299,6 +313,7 @@ class App extends Component {
     )
   }
 
+  //renders a specific form if specForm is true
   selectRetailer() {
     let retailOptions = [<option key="select-1" value="null">Select</option>];
       let retailers = this.state.data.Retailers;
@@ -307,10 +322,11 @@ class App extends Component {
           retailOptions.push(
             <option key={retail} value={retail}>{retail}</option>
           )
-      }
+      };
     return retailOptions;
-  }
+  };
 
+  //loop through state to grab locations as option tags
   getLocation() {
     let locationOptions = [<option key="select-1" value="null">Select</option>];
     let locations = this.state.data.Location;
@@ -319,16 +335,18 @@ class App extends Component {
           locationOptions.push(
             <option key={location} value={location}>{location}</option>
           )
-      }
+      };
     return locationOptions;
-  }
+  };
 
+  //sets state to true, specificPricing will render
   addSpecific(){
     this.setState({
       specTrue: true,
     });
   };
 
+  //removes specificPricing
   removeSpecific(){
     this.setState({
       specTrue: false,
@@ -391,8 +409,8 @@ class App extends Component {
         </div>
       )
     return specific;
-  }
-}
+  };
+};
 
   render() {
     return (
