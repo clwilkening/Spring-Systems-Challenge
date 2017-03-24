@@ -3,16 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: "",
+    };
+  };
+
+  componentDidMount(){
+    let data = require('./form.json');  //import the json file
+    this.setState({ data }); //set data to state so that it can be used throughout app
+  }
+
+productDetails(){
+
+}
+
+
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Product Form</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
       </div>
     );
   }
