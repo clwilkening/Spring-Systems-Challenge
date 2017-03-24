@@ -11,11 +11,14 @@ class App extends Component {
     this.productDetails = this.productDetails.bind(this);
     this.productAvailability = this.productAvailability.bind(this);
     this.retailers = this.retailers.bind(this);
+    this.getLocation = this.getLocation.bind(this);
 
     this.state = {
       data: [],
       uom: "",
-      prodPackCount: 1,
+      prodPackCount: 0,
+      specCount: 1,
+      specTrue: false,
     };
   };
 
@@ -284,6 +287,101 @@ class App extends Component {
     )
   }
 
+  selectRetailer() {
+    let retailOptions = [<option key="select-1" value="null">Select</option>];
+      let retailers = this.state.data.Retailers;
+      for (let key in retailers){
+        let retail = retailers[key]
+          retailOptions.push(
+            <option key={retail} value={retail}>{retail}</option>
+          )
+      }
+    return retailOptions;
+  }
+
+  getLocation() {
+    let locationOptions = [<option key="select-1" value="null">Select</option>];
+    let locations = this.state.data.Location;
+      for (let key in locations){
+      let location = locations[key]
+          locationOptions.push(
+            <option key={location} value={location}>{location}</option>
+          )
+      }
+    return locationOptions;
+  }
+
+  addSpecific(){
+    this.setState({
+      specTrue: true,
+    });
+  };
+
+  removeSpecific(){
+    this.setState({
+      specTrue: false,
+    });
+  };
+
+  specificPricing() {
+    let specific = [];
+    let count = this.state.specCount;
+    for (let i = 0; i < count; i++) {
+      if(count === 0 ) return specific;
+      specific.push(
+        <div>
+        <div id="specific">
+          <Col xs={12} sm={11}>
+            <h4>Retailer/Location SpecificPricing</h4>
+          </Col>
+          <Col xs={12} sm={1}>
+            <Button bsStyle="danger" onClick={()=> this.removeSpecific()}>Delete</Button>
+          </Col>
+        </div>
+        <FormGroup className="specific-container">
+          <Col xs={12} sm={6}>
+            <ControlLabel>Retailer *</ControlLabel>
+            <FormControl componentClass="select">
+              {this.selectRetailer()}
+            </FormControl>
+          </Col>
+          <Col xs={12} sm={6}>
+            <ControlLabel>Retailer Location</ControlLabel>
+            <FormControl componentClass="select">
+              {this.getLocation()}
+            </FormControl>
+          </Col>
+          <Col componentClass={ControlLabel} sm={12} md={4}>
+            Site Unit Cost *
+            <FormControl
+                id="formControlsText"
+                type="number"
+                label="site unit cost"
+              >
+            </FormControl>
+          </Col>
+          <Col componentClass={ControlLabel} sm={12} md={4}>
+            Site Currency *
+            <FormControl componentClass="select">
+              {this.getCurrency()}
+            </FormControl>
+          </Col>
+          <Col componentClass={ControlLabel} sm={12} md={4}>
+            Site Experation *
+            <FormControl
+              id="formControlsText"
+              type="date"
+              label="expiration"
+            >
+            </FormControl>
+          </Col>
+        </FormGroup>
+        </div>
+      )
+    return specific;
+  }
+}
+
   render() {
     return (
       <div className="App">
@@ -310,6 +408,14 @@ class App extends Component {
             <h3>Product Pricing</h3>
           </Col>
           {this.productPricing()}
+          {this.state.specTrue?
+            this.specificPricing()
+            :
+            null
+          }
+          <Col xs={12} sm={3} smOffset={6}>
+            <Button bsStyle="primary" onClick={()=> this.addSpecific()}>Add Retailer/Location Pricing(s)</Button>
+          </Col>
         </Form>
       :
       <p>Loading</p>
