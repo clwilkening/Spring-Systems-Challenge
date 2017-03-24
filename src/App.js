@@ -192,15 +192,15 @@ class App extends Component {
             Sub-Product Qty*
           </Col>
           <Col sm={12} md={3}>
-          <FormControl
-            id="formControlsText"
-            type="text"
-            label="Vendor Item Number"
-          >
-          </FormControl>
+            <FormControl
+              id="formControlsText"
+              type="text"
+              label="Vendor Item Number"
+            >
+            </FormControl>
           </Col>
           <Col xs={1}>
-          <Button bsStyle="danger" onClick={() => this.removeProduct()}>Delete</Button>
+            <Button bsStyle="danger" onClick={() => this.removeProduct()}>Delete</Button>
           </Col>
         </FormGroup>
       </div>
@@ -241,6 +241,49 @@ class App extends Component {
     )
   }
 
+  getCurrency(){
+    let curOptions = [<option key="select-2" value="null">Select One</option>];
+      let currencies = this.state.data.Currency;
+      for (let key in currencies){
+        let currency = currencies[key]
+          curOptions.push(
+            <option key={currency} value={currency}>{currency}</option>
+          )
+    }
+    return curOptions;
+  }
+
+  productPricing(){
+    return(
+      <FormGroup>
+        <Col componentClass={ControlLabel} sm={12} md={4}>
+            Unit Cost *
+          <FormControl
+              id="formControlsText"
+              type="text"
+              label="Unit Cost"
+            >
+          </FormControl>
+        </Col>
+        <Col componentClass={ControlLabel} sm={12} md={4}>
+          Currency *
+          <FormControl componentClass="select">
+            {this.getCurrency()}
+          </FormControl>
+        </Col>
+        <Col componentClass={ControlLabel} sm={12} md={4}>
+          Experation *
+          <FormControl
+              id="formControlsText"
+              type="date"
+              label="expiration"
+            >
+          </FormControl>
+        </Col>
+      </FormGroup>
+    )
+  }
+
   render() {
     return (
       <div className="App">
@@ -260,6 +303,13 @@ class App extends Component {
           <Button bsStyle="primary" onClick={()=> this.addPack()}>Add Product Pack(s)</Button>
           </Col>
           {this.productAvailability()}
+          <Col xs={12} sm={12}>
+            <h3>Product Attributes</h3>
+          </Col>
+          <Col xs={12} sm={12}>
+            <h3>Product Pricing</h3>
+          </Col>
+          {this.productPricing()}
         </Form>
       :
       <p>Loading</p>
