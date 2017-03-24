@@ -7,11 +7,23 @@ class App extends Component {
     super(props);
 
     this.selectVendor = this.selectVendor.bind(this);
-    this.removeProduct = this.removeProduct.bind(this);
+    this.productDescription = this.productDescription.bind(this);
+    this.productUOM = this.productUOM.bind(this);
+    this.subProduct = this.subProduct.bind(this);
     this.productDetails = this.productDetails.bind(this);
-    this.productAvailability = this.productAvailability.bind(this);
+    this.productIdentifiers = this.productIdentifiers.bind(this);
+    this.removeProduct = this.removeProduct.bind(this);
+    this.addPack = this.addPack.bind(this);
+    this.productPack = this.productPack.bind(this);
     this.retailers = this.retailers.bind(this);
+    this.productAvailability = this.productAvailability.bind(this);
+    this.getCurrency = this.getCurrency.bind(this);
+    this.productPricing = this.productPricing.bind(this);
+    this.selectRetailer = this.selectRetailer.bind(this);
     this.getLocation = this.getLocation.bind(this);
+    this.addSpecific = this.addSpecific.bind(this);
+    this.removeSpecific = this.removeSpecific.bind(this);
+    this.specificPricing = this.specificPricing.bind(this);
 
     this.state = {
       data: [],
