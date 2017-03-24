@@ -9,7 +9,8 @@ class App extends Component {
     this.selectVendor = this.selectVendor.bind(this);
     this.removeProduct = this.removeProduct.bind(this);
     this.productDetails = this.productDetails.bind(this);
-    this.productIdentifiers = this.productIdentifiers.bind(this);
+    this.productAvailability = this.productAvailability.bind(this);
+    this.retailers = this.retailers.bind(this);
 
     this.state = {
       data: [],
@@ -123,10 +124,10 @@ class App extends Component {
         <h3>Product Details</h3>
       </Col>
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={12} md={2}>
+          <Col componentClass={ControlLabel} sm={12} md={3}>
             GTIN Code, UPC or EAN
           </Col>
-          <Col sm={12} md={4}>
+          <Col sm={12} md={3}>
             <FormControl
               id="formControlsText"
               type="text"
@@ -134,10 +135,10 @@ class App extends Component {
             >
             </FormControl>
           </Col>
-          <Col componentClass={ControlLabel} sm={12} md={2}>
+          <Col componentClass={ControlLabel} sm={12} md={3}>
             Vendor Item Number
           </Col>
-          <Col sm={12} md={4}>
+          <Col sm={12} md={3}>
           <FormControl
             id="formControlsText"
             type="text"
@@ -178,7 +179,7 @@ class App extends Component {
       packs.push(
         <div>
         <FormGroup>
-          <Col sm={12} xs={12} md={2}>
+          <Col sm={12} xs={12} md={3}>
             <ControlLabel>Sub-Product*</ControlLabel>
           </Col>
           <Col sm={12} xs={12} md={3}>
@@ -208,7 +209,37 @@ class App extends Component {
     return packs;
   }
 
+  retailers() {
+    let retailOptions = [<option key="select-1" value="select" disabled>select (multiple)</option>];
+      let retailers = this.state.data.Retailers;
+      for (let key in retailers){
+        let retail = retailers[key]
+          retailOptions.push(
+            <option key={retail} value={retail}>{retail}</option>
+          )
+      }
+    return retailOptions;
+  }
 
+  productAvailability(){
+    return(
+      <div>
+        <Col xs={12} sm={12}>
+          <h3>Product Availability</h3>
+        </Col>
+        <FormGroup controlId="formControlsSelectMultiple">
+          <Col xs={12} sm={4}>
+            <ControlLabel>Product Availability</ControlLabel>
+          </Col>
+          <Col xs={12} sm={8}>
+            <FormControl componentClass="select" multiple>
+              {this.retailers()}
+            </FormControl>
+          </Col>
+        </FormGroup>
+      </div>
+    )
+  }
 
   render() {
     return (
@@ -217,6 +248,7 @@ class App extends Component {
           <h2>Product Form</h2>
         </div>
       <Grid className="product-det">
+      {this.state.data !== [] ?
         <Form horizontal>
           {this.productDetails()}
           {this.productIdentifiers()}
@@ -227,7 +259,11 @@ class App extends Component {
           <Col xs={12} md={3} mdOffset={9}>
           <Button bsStyle="primary" onClick={()=> this.addPack()}>Add Product Pack(s)</Button>
           </Col>
+          {this.productAvailability()}
         </Form>
+      :
+      <p>Loading</p>
+      }
       </Grid>
       </div>
     );
