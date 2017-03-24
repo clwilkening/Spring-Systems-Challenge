@@ -1,16 +1,27 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-header {
+  display: flex;
+  align-items: center;
   background-color: #222;
-  height: 45px;
-  padding: 10px;
+  height: 75px;
+  padding-left: 20px;
   color: white;
-  line-height: 1px;
+  line-height: 0px;
 }
 
 .App-intro {
   font-size: large;
 }
 
+h3 {
+  text-decoration: underline;
+  text-decoration-color: #f6f6f6;
+  margin-top: 15px;
+}
+
+.product-det {
+  margin: 10px;
+}
