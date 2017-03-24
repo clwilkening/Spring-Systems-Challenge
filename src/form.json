@@ -1,0 +1,52 @@
+{
+  "product-details": {
+    "vendors": {
+      "0": "Air Filters 1 Inc (V)",
+      "1": "Air Filters 2 Inc (V)",
+      "2": "Air Filters 3 Inc (V)",
+      "3": "Air Filters 4 Inc (V)",
+      "4": "Air Filters 5 Inc (V)",
+    },
+    "description": {
+      "0": "121203 - AMERICAN STANDARD;M952199-0070A pressure balance unit",
+      "1": "124501 - EUROPEAN STANDARD;M952199-0070A pressure balance unit",
+      "2": "245103 - AFRICAN STANDARD;M952199-0070A pressure balance unit",
+      "3": "121254 - AUSTRALIAN STANDARD;M952199-0070A pressure balance unit",
+      "4": "121132 - ASIAN STANDARD;M952199-0070A pressure balance unit",
+    },
+    "UOM": {
+      "0": "EA - Each",
+      "1": "NW - Newton",
+      "2": "EN - Envelope",
+      "3": "PK - Package",
+      "4": "BL - Bottle",
+    },
+    "Sub Product": {
+      "0": "Batteries",
+      "1": "Tools",
+      "2": "Rubber",
+      "3": "Vacuum",
+      "4": "Wrench",
+    },
+    "Relailers": {
+      "0": "Macy's (R)",
+      "1": "Jet.com (R)",
+      "2": "American Apparel (R)",
+      "3": "Sears (R)",
+      "4": "Walmart (R)",
+    },
+    "Location": {
+      "0": "New York",
+      "1": "Texas",
+      "2": "New Jersey",
+      "3": "Connecticut",
+      "4": "Oklahoma",
+    },
+    "Currency": {
+      "0": "USD",
+      "1": "GBP",
+      "2": "EUR",
+      "3": "CNY",
+      "4": "MXN",
+  },
+}
